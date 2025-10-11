@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RGS TechVerse</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="container">
+    <div class="logo">
+      <!-- SVG Logo -->
+      <img src="logo.png" alt="RGS TechVerse Logo" width="100" height="100">
+      <div>
+        <h1>RGS TechVerse</h1>
+        <small>Community · Courses · Projects</small>
+      </div>
+    </div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#plans">Plans</a>
+      <a href="#community">Community</a>
+      <a href="#contact" class="join">Join</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Build. Learn. Ship — together.</h1>
+        <p>RGS TechVerse is a developer community that offers live workshops, curated projects, mentorship, and a marketplace for members to sell courses and digital products.</p>
+        <a href="#plans" class="btn btn-primary">Become a Member</a>
+        <a href="#community" class="btn btn-secondary">Explore Community</a>
+      </div>
+      <div class="hero-payment">
+        <h3>Try Pro Membership — Demo Payment</h3>
+        <p>This button opens a Razorpay checkout (demo). Replace with server-side order for production.</p>
+        <input type="text" placeholder="Your Name" id="demoName">
+        <input type="email" placeholder="Email" id="demoEmail">
+        <button id="demoPayBtn">Pay ₹199</button>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section id="features">
+      <h2 class="section-title">Features</h2>
+      <div class="cards">
+        <div class="card">
+          <h4>Workshops</h4>
+          <p>Weekly hands-on workshops and challenges.</p>
+        </div>
+        <div class="card">
+          <h4>Mentorship</h4>
+          <p>1:1 mentorship and code reviews.</p>
+        </div>
+        <div class="card">
+          <h4>Marketplace</h4>
+          <p>Sell projects, templates, and courses.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans">
+      <h2 class="section-title">Membership Plans</h2>
+      <div class="cards">
+        <div class="card">
+          <h4>Free</h4>
+          <p>Access to community, channels, limited workshops</p>
+          <p><strong>₹0 / month</strong></p>
+          <button onclick="payCourse('Free', 0)">Join / Pay</button>
+        </div>
+        <div class="card">
+          <h4>Pro</h4>
+          <p>Full workshop access, mentorship credits, marketplace fees waived</p>
+          <p><strong>₹199 / month</strong></p>
+          <button onclick="payCourse('Pro', 199)">Join / Pay</button>
+        </div>
+        <div class="card">
+          <h4>Team</h4>
+          <p>Company/Bootcamp access with seat pricing</p>
+          <p><strong>₹999 / month</strong></p>
+          <button onclick="payCourse('Team', 999)">Join / Pay</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community">
+      <h2 class="section-title">Community Highlights</h2>
+      <ul>
+        <li>• Monthly hackathons</li>
+        <li>• Peer code reviews</li>
+        <li>• Job board & referrals</li>
+        <li>• Regional meetups</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Get in Touch</h2>
+      <p>Email us at <a href="mailto:hello@rgstechverse.com">hello@rgstechverse.com</a> for setup or inquiries.</p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> RGS TechVerse. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
