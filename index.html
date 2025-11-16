@@ -1,119 +1,383 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RGS TechVerse</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RGS TechVerse — Innovation | Development | Digital</title>
+  <meta name="description" content="RGS TechVerse - Digital innovation, web & app development, automation and data-driven solutions.">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root { --brand:#0d6efd; --muted:#6c757d; }
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; line-height:1.6; background:#fff; }
+    .hero { background: linear-gradient(135deg, rgba(13,110,253,0.08), rgba(13,110,253,0.02)); padding:6rem 0; }
+    .feature-icon { width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:#f8f9fa; font-size:22px; color:var(--brand); }
+    .card-cta { border-radius:14px; }
+    .service-card { transition: transform .22s ease, box-shadow .22s ease; border-radius:12px; }
+    .service-card:hover { transform:translateY(-6px); box-shadow:0 10px 30px rgba(13,110,253,0.06); }
+    .team img { object-fit:cover; }
+    footer { background:#0b1220; color:#dbe6ff; }
+    .small-muted { color: #6c757d; }
+    @media (max-width:767px) { .hero { padding:3.5rem 0; } }
+  </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="container">
-    <div class="logo">
-      <!-- SVG Logo -->
-      <img src="logo.png" alt="RGS TechVerse Logo" width="100" height="100">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <div class="me-2 bg-black rounded d-flex align-items-center justify-content-center" style="width: 100px;height:100px;font-weight:700"><img src="logo.png" alt="RGS TechVerse" class="img-fluid"></div>
       <div>
-        <h1>RGS TechVerse</h1>
-        <small>Community · Courses · Projects</small>
+        <div style="font-weight:700;color:#fff">RGS TechVerse</div>
+        <small class="text-white">Innovation • Digital • Growth</small>
       </div>
-    </div>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#plans">Plans</a>
-      <a href="#community">Community</a>
-      <a href="#contact" class="join">Join</a>
-    </nav>
-  </header>
+    </a>
 
-  <main class="container">
-    <!-- Hero -->
-    <div class="hero">
-      <div class="hero-text">
-        <h1>Build. Learn. Ship — together.</h1>
-        <p>RGS TechVerse is a developer community that offers live workshops, curated projects, mentorship, and a marketplace for members to sell courses and digital products.</p>
-        <a href="#plans" class="btn btn-primary">Become a Member</a>
-        <a href="#community" class="btn btn-secondary">Explore Community</a>
-      </div>
-      <div class="hero-payment">
-        <h3>Try Pro Membership — Demo Payment</h3>
-        <p>This button opens a Razorpay checkout (demo). Replace with server-side order for production.</p>
-        <input type="text" placeholder="Your Name" id="demoName">
-        <input type="email" placeholder="Email" id="demoEmail">
-        <button id="demoPayBtn">Pay ₹199</button>
-      </div>
-    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- Features -->
-    <section id="features">
-      <h2 class="section-title">Features</h2>
-      <div class="cards">
-        <div class="card">
-          <h4>Workshops</h4>
-          <p>Weekly hands-on workshops and challenges.</p>
-        </div>
-        <div class="card">
-          <h4>Mentorship</h4>
-          <p>1:1 mentorship and code reviews.</p>
-        </div>
-        <div class="card">
-          <h4>Marketplace</h4>
-          <p>Sell projects, templates, and courses.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Plans -->
-    <section id="plans">
-      <h2 class="section-title">Membership Plans</h2>
-      <div class="cards">
-        <div class="card">
-          <h4>Free</h4>
-          <p>Access to community, channels, limited workshops</p>
-          <p><strong>₹0 / month</strong></p>
-          <button onclick="payCourse('Free', 0)">Join / Pay</button>
-        </div>
-        <div class="card">
-          <h4>Pro</h4>
-          <p>Full workshop access, mentorship credits, marketplace fees waived</p>
-          <p><strong>₹49 / month</strong></p>
-          <button onclick="payCourse('Pro', 49)">Join / Pay</button>
-        </div>
-        <div class="card">
-          <h4>Team</h4>
-          <p>Company/Bootcamp access with seat pricing</p>
-          <p><strong>₹99 / month</strong></p>
-          <button onclick="payCourse('Team', 99)">Join / Pay</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Community -->
-    <section id="community">
-      <h2 class="section-title">Community Highlights</h2>
-      <ul>
-        <li>• Monthly hackathons</li>
-        <li>• Peer code reviews</li>
-        <li>• Job board & referrals</li>
-        <li>• Regional meetups</li>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center text-white">
+        <li class="nav-item"><a class="nav-link active text-white" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#work">Work</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#team">Team</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
       </ul>
-    </section>
+      <a href="#contact" class="btn btn-primary ms-3">Get Started</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2 class="section-title">Get in Touch</h2>
-      <p>Email us at <a href="mailto:rgstechverse@gmail.com">rgstechverse@gmail.com</a> for setup or inquiries.</p>
-    </section>
-  </main>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h1 class="display-5 fw-bold">Build smarter digital products with <span class="text-primary">RGS TechVerse</span></h1>
+        <p class="lead text-muted">We design and engineer web & mobile apps, automations, and data-driven systems that help companies scale faster and operate smarter.</p>
+        <div class="d-flex gap-2 mt-4">
+          <a href="#contact" class="btn btn-primary btn-lg">Work with us</a>
+          <a href="#services" class="btn btn-outline-secondary btn-lg">Our Services</a>
+        </div>
+        <div class="mt-4 d-flex flex-wrap gap-3 text-muted small">
+          <div class="d-flex align-items-center"><i class="fa-solid fa-check me-2"></i> Trusted across industries</div>
+          <div class="d-flex align-items-center"><i class="fa-solid fa-award ms-2 me-2"></i> Robust engineering</div>
+          <div class="d-flex align-items-center"><i class="fa-solid fa-people-roof ms-2 me-2"></i> User-first design</div>
+        </div>
+      </div>
 
-  <footer>
-    © <span id="year"></span> RGS TechVerse. All rights reserved.
-  </footer>
+      <div class="col-lg-5 mt-5 mt-lg-0">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Request a free consultation</h5>
+            <p class="text-muted small">Tell us your project idea and we'll share an initial roadmap.</p>
+            <form id="leadForm">
+              <div class="mb-3">
+                <label class="form-label small">Name</label>
+                <input type="text" class="form-control" id="leadName" placeholder="Your full name" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Email</label>
+                <input type="email" class="form-control" id="leadEmail" placeholder="you@company.com" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Project summary</label>
+                <input type="text" class="form-control" id="leadProject" placeholder="A short description" required>
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-primary" type="submit">Request call</button>
+              </div>
+            </form>
+            <div id="leadMsg" class="mt-3" style="display:none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- SERVICES -->
+<section id="services" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Our Services</h2>
+      <p class="text-muted">End-to-end engineering across product design, web & mobile development, automation and data systems.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 service-card h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+            <div>
+              <h5>Web & App Development</h5>
+              <p class="small text-muted mb-0">Modern frontends, scalable backends, PWA and native mobile apps.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 service-card h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="feature-icon"><i class="fa-solid fa-gear"></i></div>
+            <div>
+              <h5>Automation & Integrations</h5>
+              <p class="small text-muted mb-0">Connect tools, automate workflows, and remove manual steps.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 service-card h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+              <h5>Data & Analytics</h5>
+              <p class="small text-muted mb-0">Data pipelines, warehouses and dashboards for decision-making.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 service-card h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div>
+              <h5>Product Design</h5>
+              <p class="small text-muted mb-0">UX research, prototyping and polished UI focused on outcomes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 service-card h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+            <div>
+              <h5>Security & Compliance</h5>
+              <p class="small text-muted mb-0">Secure architectures and compliance support for regulated industries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card p-4 service-card h-100">
+          <div class="d-flex align-items-start gap-3">
+            <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+            <div>
+              <h5>Support & Maintenance</h5>
+              <p class="small text-muted mb-0">SLA-driven support and maintenance for production systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORK / CASES -->
+<section id="work" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Selected Work</h2>
+      <p class="text-muted">A few projects that showcase our approach to product design and engineering.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100">
+          <img src="1.png" class="card-img-top" alt="project">
+          <div class="card-body">
+            <h5 class="card-title">E-commerce platform for retail chain</h5>
+            <p class="card-text text-muted">End-to-end platform with inventory sync, order routing and analytics dashboard.</p>
+            <a href="#" class="stretched-link small">Read more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card h-100">
+          <img src="2.png" class="card-img-top" alt="project">
+          <div class="card-body">
+            <h5 class="card-title">Automation & Analytics for logistics</h5>
+            <p class="card-text text-muted">Automated billing, route optimization and real-time tracking system.</p>
+            <a href="#" class="stretched-link small">Read more</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Meet the Team</h2>
+      <p class="text-muted">Engineers, designers, and product thinkers who ship reliable software.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-4">
+        <div class="card team h-100 text-center p-3">
+          <img src="Rupesh_Kumar91.jpg" class="rounded-circle mx-auto" style="width:120px;height:120px" alt="team">
+          <div class="card-body">
+            <h6 class="mb-0">Rupesh Kumar</h6>
+            <small class="text-muted">Founder & CEO</small>
+            <p class="small mt-2 text-muted">Product strategist with 10+ years building SaaS and marketplaces.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="card team h-100 text-center p-3">
+          <img src="https://i.pravatar.cc/300?img=47" class="rounded-circle mx-auto" style="width:120px;height:120px" alt="team">
+          <div class="card-body">
+            <h6 class="mb-0">Priya Sharma</h6>
+            <small class="text-muted">Head of Engineering</small>
+            <p class="small mt-2 text-muted">Builds resilient systems and leads scalable engineering teams.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="card team h-100 text-center p-3">
+          <img src="https://i.pravatar.cc/300?img=5" class="rounded-circle mx-auto" style="width:120px;height:120px" alt="team">
+          <div class="card-body">
+            <h6 class="mb-0">Ankit Verma</h6>
+            <small class="text-muted">Lead Designer</small>
+            <p class="small mt-2 text-muted">Designs usable interfaces with focus on conversion and performance.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-primary text-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h3 class="fw-bold">Let's build something great together</h3>
+        <p class="small">Email: <a href="mailto:hello@rgs-techverse.com" class="text-white">hello@rgs-techverse.com</a> • Phone: +91 88639 42514</p>
+        <p class="text-white-50">Or send a quick message using the contact form — we'll get back within 1-2 business days.</p>
+        <div class="mt-4 small">
+          <strong>Address</strong>
+          <div class="text-white-50">Bengaluru, Karnataka, India</div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="card card-cta shadow-sm">
+          <div class="card-body">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label small text-muted">Name</label>
+                <input type="text" class="form-control" id="cName" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small text-muted">Email</label>
+                <input type="email" class="form-control" id="cEmail" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small text-muted">Message</label>
+                <textarea class="form-control" id="cMsg" rows="4" required></textarea>
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-primary" type="submit">Send message</button>
+              </div>
+            </form>
+            <div id="contactSent" class="mt-3" style="display:none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-4">
+  <div class="container d-md-flex justify-content-between align-items-center">
+    <div>
+      <div class="fw-bold">RGS TechVerse</div>
+      <small class="text-white" id="footerYear">© 2025 RGS TechVerse. All rights reserved.</small>
+    </div>
+    <div class="mt-3 mt-md-0">
+      <a class="text-white me-3" href="#"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+      <a class="text-white me-3" href="#"><i class="fa-brands fa-github fa-lg"></i></a>
+      <a class="text-white" href="#"><i class="fa-solid fa-envelope fa-lg"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Set current year in footer dynamically
+  document.addEventListener('DOMContentLoaded', function() {
+    var y = new Date().getFullYear();
+    var e = document.getElementById('footerYear');
+    if (e) e.textContent = '© ' + y + ' RGS TechVerse. All rights reserved.';
+  });
+
+  // Simple client-side handling for demo purposes
+  function showMessage(el, msg, cls='alert-success') {
+    el.style.display = 'block';
+    el.className = 'alert ' + cls;
+    el.innerText = msg;
+    setTimeout(() => el.style.display = 'none', 4500);
+  }
+
+  // Lead form
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('leadName').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+    const project = document.getElementById('leadProject').value.trim();
+    const el = document.getElementById('leadMsg');
+    if (!name || !email) return showMessage(el, 'Please fill name and email', 'alert-danger');
+    // For production, replace this with an API call to your backend
+    showMessage(el, 'Thanks ' + name + ' — we\\'ll reach out to you shortly.');
+    e.target.reset();
+  });
+
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('cName').value.trim();
+    const email = document.getElementById('cEmail').value.trim();
+    const msg = document.getElementById('cMsg').value.trim();
+    const el = document.getElementById('contactSent');
+    if (!name || !email || !msg) return showMessage(el, 'Please complete all fields', 'alert-danger');
+
+    // Demo behavior: open user's mail client (fallback) — replace with real API in production
+    const subject = encodeURIComponent('RGS TechVerse — Contact from ' + name);
+    const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + msg);
+    window.location.href = 'mailto:hello@rgs-techverse.com?subject=' + subject + '&body=' + body;
+    showMessage(el, 'Opening your mail client...');
+    e.target.reset();
+  });
+</script>
 </body>
 </html>
-
-
-
